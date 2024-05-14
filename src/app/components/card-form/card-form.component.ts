@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-form.component.scss']
 })
 export class CardFormComponent {
-
+  blocks = [ "Amonkhet", "Ixalan", "Zendikar", "Ravnica", "Onslaught"] //blocos do select
 }

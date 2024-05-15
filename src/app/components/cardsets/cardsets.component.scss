@@ -50,5 +50,17 @@ mat-card {
         vertical-align: middle;
       }
     }
+    .card-item{
+      width: 50%;
+      padding: 1rem;
+      background-color: map-get($map: mat.$grey-palette, $key: 700);
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      .card-info{
+        color: white;
+        padding: 0.5rem;
+      }
+    }
   }
 }

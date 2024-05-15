@@ -1,0 +1,35 @@
+@use "@angular/material" as mat;
+
+$primary-palette: mat.$purple-palette;
+$accent-palette: mat.$green-palette;
+
+mat-card {
+  max-width: 380px;
+  margin: 1rem auto;
+
+  @media screen and (min-width: 768px) {
+    max-width: 600px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 80%;
+  }
+
+  mat-card-title {
+    color: map-get($map: $accent-palette, $key: A200);
+  }
+  mat-card-header {
+    margin-bottom: 0.8rem;
+  }
+
+  mat-card-content {
+    text-align: center;
+    color: white;
+    mat-spinner {
+      margin: 0 auto;
+    }
+    h2 {
+      margin-top: 1rem;
+    }
+  }
+}

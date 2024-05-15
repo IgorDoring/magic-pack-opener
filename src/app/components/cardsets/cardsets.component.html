@@ -22,8 +22,12 @@
           </button>
         </div>
       </div>
+      <p style="color: white" *ngIf="error?.hasError">{{ error?.message }}</p>
     </mat-card-content>
   </mat-card>
+  <app-spinner-section
+    *ngIf="spinner.startSpinner"
+    [value]="spinner.spinnerValue"
+  ></app-spinner-section>
   <app-boosters *ngIf="cards.length == 30" [cards]="cards"></app-boosters>
-  <p style="color: white" *ngIf="error?.hasError">{{ error?.message }}</p>
 </section>

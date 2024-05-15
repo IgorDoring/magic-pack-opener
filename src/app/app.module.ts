@@ -19,6 +19,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SpinnerSectionComponent } from './components/spinner-section/spinner-section.component';
 
 const materialConponents = [
   MatFormFieldModule,
@@ -39,6 +40,7 @@ const materialConponents = [
     CardFormComponent,
     CardsetsComponent,
     BoostersComponent,
+    SpinnerSectionComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,8 +13,11 @@ export class CardsetsComponent {
   @Input() sets: Set[] | undefined;
   setCode: string | undefined;
   cards: Card[] = [];
-
-  error: { hasError: boolean; message: string } | undefined;
+  spinner: { startSpinner: boolean; spinnerValue: number } = {
+    startSpinner: false,
+    spinnerValue: 0,
+  };
+  error: { hasError: boolean; message: string } = {hasError: false, message: ""};
 
   constructor(private cardService: CardService) {}
 
@@ -23,6 +26,7 @@ export class CardsetsComponent {
       if (card.types.find((type) => type == 'Creature')) {
         if (this.cards.length < 30) {
           this.cards.push(card);
+          this.spinner!.spinnerValue += 3.33;
         } else {
           return;
         }
@@ -31,13 +35,18 @@ export class CardsetsComponent {
   }
 
   getCards(code: string) {
+    this.spinner.startSpinner = true;
     this.cardService.getBooster(code).subscribe({
       next: (res) => {
         this.processCards(res.cards);
-        console.log('after process', this.cards);
-        if (this.cards.length < 30) this.getCards(code);
+        if (this.cards.length < 30) {
+          this.getCards(code);
+        } else {
+          this.spinner.startSpinner = false;
+        }
       },
       error: (err) => {
+        this.spinner.startSpinner = false;
         this.error = {
           hasError: true,
           message: 'Something went wrong, try another collection',
@@ -48,6 +57,7 @@ export class CardsetsComponent {
 
   selectSet(code: string) {
     this.setCode = code;
+    this.error.hasError = false;
     this.getCards(code);
   }
 }

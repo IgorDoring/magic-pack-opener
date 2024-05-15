@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 //components
 import { AppComponent } from './app.component';
+import { CardsetsComponent } from './components/cardsets/cardsets.component';
 import { CardFormComponent } from './components/card-form/card-form.component';
 //material modules
 import { MatButtonModule } from '@angular/material/button';
@@ -14,7 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { CardsetsComponent } from './components/cardsets/cardsets.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 const materialConponents = [
   MatFormFieldModule,
@@ -24,6 +25,7 @@ const materialConponents = [
   MatButtonModule,
   MatIconModule,
   MatDividerModule,
+  MatChipsModule
 ];
 
 @NgModule({

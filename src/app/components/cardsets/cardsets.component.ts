@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Set } from 'src/app/model/set';
+import { CardService } from 'src/app/services/card.service';
 
 @Component({
   selector: 'app-cardsets',
@@ -8,5 +9,11 @@ import { Set } from 'src/app/model/set';
   styleUrls: ['./cardsets.component.scss'],
 })
 export class CardsetsComponent {
-  @Input() query: string = "";
+  @Input() sets: Set[] | undefined;
+
+  constructor(private cardService: CardService) { }
+
+  selectSet(code: string){
+    console.log(code)
+  }
 }

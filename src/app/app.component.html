@@ -1,3 +1,4 @@
 <main>
-  <app-card-form></app-card-form>
+  <app-card-form (getSets)="hasSubmitted($event)"></app-card-form>
+  <app-cardsets *ngIf="sets.length" [sets]="sets"></app-cardsets>
 </main>

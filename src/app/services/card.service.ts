@@ -11,8 +11,8 @@ export class CardService {
 
   constructor(private http: HttpClient) {}
 
-  getCardSet(query: string): Observable<Set[]> {
+  getCardSet(query: string): Observable<{sets: Set[]}> {
     let url = this.url + '/sets?name=' + query;
-    return this.http.get<Set[]>(url);
+    return this.http.get<{sets: Set[]}>(url);
   }
 }

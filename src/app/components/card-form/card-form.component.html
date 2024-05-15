@@ -1,27 +1,29 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Search Magic Pack</mat-card-title>
-  </mat-card-header>
-  <mat-card-content [formGroup]="cardForm">
-    <mat-form-field id="set" color="accent">
-      <mat-label for="set">Name of the set</mat-label>
-      <input matInput formControlName="setName" />
-    </mat-form-field>
-    <mat-form-field color="accent">
-      <mat-label for="block">Block</mat-label>
-      <mat-select id="block" name="block" formControlName="block">
-        <mat-option *ngFor="let block of blocks" [value]="block">
-          {{ block }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <button
-      [disabled]="cardForm.invalid"
-      mat-stroked-button
-      color="accent"
-      (click)="submit()"
-    >
-      <mat-icon>search</mat-icon> Search
-    </button>
-  </mat-card-content>
-</mat-card>
+<section>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Search Magic Pack</mat-card-title>
+    </mat-card-header>
+    <mat-card-content [formGroup]="cardForm">
+      <mat-form-field id="set" color="accent">
+        <mat-label for="set">Name of the set</mat-label>
+        <input matInput formControlName="setName" />
+      </mat-form-field>
+      <mat-form-field color="accent">
+        <mat-label for="block">Block</mat-label>
+        <mat-select id="block" name="block" formControlName="block">
+          <mat-option *ngFor="let block of blocks" [value]="block">
+            {{ block }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button
+        [disabled]="cardForm.invalid"
+        mat-stroked-button
+        color="accent"
+        (click)="submit()"
+      >
+        <mat-icon>search</mat-icon> Search
+      </button>
+    </mat-card-content>
+  </mat-card>
+</section>

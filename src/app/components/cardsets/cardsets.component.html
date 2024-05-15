@@ -1,1 +1,20 @@
-<p>cardsets works!</p>
+<section>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Collections</mat-card-title>
+    </mat-card-header>
+    <!-- container flex -->
+    <mat-card-content>
+      <div *ngFor="let set of sets" class="set-item">
+        <h2 class="set-title">{{set.name}}</h2>
+        <h4 class="set-block">{{set.block}}</h4>
+        <div class="set-actions-wrapper">
+          <mat-chip disableRipple color="accent">{{set.releaseDate | date:"dd/MM/yyyy"}}</mat-chip>
+          <button class="set-select" mat-flat-button color="accent" (click)="selectSet(set.code)">
+            Select
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

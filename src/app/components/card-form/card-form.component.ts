@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Set } from 'src/app/model/set';
@@ -11,7 +11,8 @@ import { CardService } from 'src/app/services/card.service';
 })
 export class CardFormComponent {
   blocks = ['Amonkhet', 'Ixalan', 'Zendikar', 'Ravnica', 'Onslaught']; //blocos do select
-  sets$: Observable<Set[]> | undefined;
+  @Output() getSets = new EventEmitter<Set[]>(); //evento para passar a os sets pro component do cardset
+
   constructor(private cardService: CardService) {}
 
   cardForm = new FormGroup({
@@ -27,10 +28,6 @@ export class CardFormComponent {
     return this.cardForm.get('block');
   }
 
-  getSets(query: string) {
-    this.sets$ = this.cardService.getCardSet(query);
-  }
-
   submit() {
     this.setName!.setValue(this.setName!.value!.trim());
     if (this.cardForm.valid) {
@@ -41,7 +38,9 @@ export class CardFormComponent {
       if (this.block) {
         query += this.block?.value;
       }
-      this.getSets(query);
+      this.cardService.getCardSet(query).subscribe((res) => {
+          this.getSets.emit(res.sets);
+      });
     }
   }
 }

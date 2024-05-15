@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 //components
 import { AppComponent } from './app.component';
 import { CardsetsComponent } from './components/cardsets/cardsets.component';
+import { BoostersComponent } from './components/boosters/boosters.component';
 import { CardFormComponent } from './components/card-form/card-form.component';
 //material modules
 import { MatButtonModule } from '@angular/material/button';
@@ -15,7 +16,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const materialConponents = [
   MatFormFieldModule,
@@ -25,11 +28,18 @@ const materialConponents = [
   MatButtonModule,
   MatIconModule,
   MatDividerModule,
-  MatChipsModule
+  MatChipsModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({
-  declarations: [AppComponent, CardFormComponent, CardsetsComponent],
+  declarations: [
+    AppComponent,
+    CardFormComponent,
+    CardsetsComponent,
+    BoostersComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

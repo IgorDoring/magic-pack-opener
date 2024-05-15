@@ -24,22 +24,6 @@
       </div>
     </mat-card-content>
   </mat-card>
-  <mat-card *ngIf="this.cards.length">
-    <mat-card-header>
-      <mat-card-title>Boosters</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div *ngFor="let card of cards" class="card-item">
-        <img class="card-img" [src]="card.imageUrl" />
-        <div class="card-info">
-          <h2>{{ card.name }}</h2>
-          <h4>{{ card.types }}</h4>
-          <p>{{ card.colorIdentity }}</p>
-          <p>{{ card.manaCost }}</p>
-          <p>{{ card.text }}</p>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <p style="color:white" *ngIf="error?.hasError">{{error?.message}}</p>
+  <app-boosters *ngIf="cards.length == 30" [cards]="cards"></app-boosters>
+  <p style="color: white" *ngIf="error?.hasError">{{ error?.message }}</p>
 </section>

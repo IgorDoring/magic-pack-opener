@@ -34,7 +34,7 @@ export class CardsetsComponent {
     this.cardService.getBooster(code).subscribe({
       next: (res) => {
         this.processCards(res.cards);
-        console.log('after req', this.cards);
+        console.log('after process', this.cards);
         if (this.cards.length < 30) this.getCards(code);
       },
       error: (err) => {

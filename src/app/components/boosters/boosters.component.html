@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Boosters</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let card of cards" class="card-item">
+      <img class="card-img" [src]="card.imageUrl" />
+      <div class="card-info">
+        <h2 class="card-name">{{ card.name }}</h2>
+        <h4 class="card-type">{{ card.types }}</h4>
+        <p class="card-color">{{ card.colorIdentity }}</p>
+        <p class="card-mana">{{ card.manaCost }}</p>
+        <p class="card-text">{{ card.text }}</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

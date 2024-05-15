@@ -25,29 +25,29 @@ mat-card {
   mat-card-content {
     display: flex;
     flex-wrap: wrap;
-    flex: 1 1 auto;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     gap: 8px;
-    .set-item {
-      width: 250px;
+
+    .card-item {
+      max-width: 400px;
       padding: 1rem;
       background-color: map-get($map: mat.$grey-palette, $key: 700);
       border-radius: 15px;
+      display: flex;
+      justify-content: left;
 
-      .set-title {
-        color: map-get($map: $accent-palette, $key: A200);
-        margin-bottom: 0.2rem;
+      .card-image {
+        width: 250px;
+        height: 350px;
       }
 
-      .set-block{
+      .card-info {
         color: white;
-        margin-bottom: 2rem;
-      }
+        padding: 0.5rem;
 
-      .set-actions-wrapper {
-        display: flex;
-        justify-content: space-between;
-        vertical-align: middle;
+        .card-text {
+          font-size: 0.7rem;
+        }
       }
     }
   }

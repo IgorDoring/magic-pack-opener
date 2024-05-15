@@ -27,7 +27,7 @@ export class CardFormComponent {
     return this.cardForm.get('block');
   }
 
-  getSets(query: string){
+  getSets(query: string) {
     this.sets$ = this.cardService.getCardSet(query);
   }
 
@@ -35,8 +35,8 @@ export class CardFormComponent {
     this.setName!.setValue(this.setName!.value!.trim());
     if (this.cardForm.valid) {
       let query = '';
-      if (this.setName?.value != "") {
-        query = this.setName?.value + '|'
+      if (this.setName?.value != '') {
+        query = this.setName?.value + '|';
       }
       if (this.block) {
         query += this.block?.value;

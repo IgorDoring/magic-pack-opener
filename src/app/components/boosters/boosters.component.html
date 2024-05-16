@@ -27,7 +27,7 @@
         <p class="card-color">{{ card.colorIdentity }}</p>
         <p class="card-mana">{{ card.manaCost }}</p>
         <p class="card-text">{{ card.text }}</p>
-        <button mat-flat-button color="warn" (click)="addToExclude(i)">
+        <button mat-flat-button color="warn" *ngIf="!hasRedrawed" (click)="addToExclude(i)">
           Exclude
         </button>
       </div>

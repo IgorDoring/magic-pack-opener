@@ -9,6 +9,7 @@ import { Card } from 'src/app/model/card';
 export class BoostersComponent {
   @Input() cards: Card[] = [];
   toRemoveCards: {index: number, name: string}[] = [];
+  @Input() hasRedrawed: boolean = false;
   @Output() cardsChanged = new EventEmitter()
 
   addToExclude(cardId: number) {
@@ -22,5 +23,6 @@ export class BoostersComponent {
         this.cards.splice(card.index, 1);
     })
     this.cardsChanged.emit(this.cards);
+    this.hasRedrawed = false
   }
 }

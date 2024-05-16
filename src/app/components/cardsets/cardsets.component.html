@@ -31,6 +31,7 @@
   <app-boosters
     *ngIf="cards.length == 30"
     [cards]="cards"
+    [hasRedrawed]="redraw"
     (cardsChanged)="reDraw($event)"
   ></app-boosters>
 </section>

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { Card } from 'src/app/model/card';
 import { Set } from 'src/app/model/set';
@@ -19,12 +19,19 @@ export class CardsetsComponent {
     startSpinner: false,
     spinnerValue: 0,
   };
-  error: { hasError: boolean; message: string } = {hasError: false, message: ""};
+  error: { hasError: boolean; message: string } = {
+    hasError: false,
+    message: '',
+  };
+  redraw: boolean = false;
 
-  constructor(private cardService: CardService, private _snackBar: MatSnackBar) {}
+  constructor(
+    private cardService: CardService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   openSnackBar(message: string) {
-    this._snackBar.open(message, "Close");
+    this._snackBar.open(message, 'Close');
   }
 
   processCards(cards: Card[]) {
@@ -53,20 +60,23 @@ export class CardsetsComponent {
       },
       error: (err) => {
         this.spinner.startSpinner = false;
-        this.openSnackBar("Something went wrong, try another collection");
+        this.openSnackBar('Something went wrong, try another collection');
       },
     });
   }
 
   selectSet(code: string) {
     this.setCode = code;
+    this.cards = [];
+    this.spinner.spinnerValue = 0;
     this.error.hasError = false;
     this.getCards(code);
   }
 
-  reDraw(cardsLeft: Card[]){
-    this.cards = cardsLeft
-    this.spinner.spinnerValue = cardsLeft.length * 3
+  reDraw(cardsLeft: Card[]) {
+    this.cards = cardsLeft;
+    this.spinner.spinnerValue = cardsLeft.length * 3;
+    this.redraw = true;
     this.getCards(this.setCode!);
   }
 }

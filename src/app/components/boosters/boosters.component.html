@@ -1,15 +1,35 @@
+<mat-card *ngIf="toRemoveCards.length > 0">
+  <mat-card-header>
+    <mat-card-title>Cards I want to remove</mat-card-title>
+  </mat-card-header>
+  <mat-card-content style="flex:none">
+    <div style="display: block; flex: none">
+      <mat-divider></mat-divider>
+      <h2></h2>
+      <mat-chip-listbox color="accent" style="padding: 12px;">
+        <mat-chip *ngFor="let card of toRemoveCards">{{ card.name }}</mat-chip>
+      </mat-chip-listbox>
+    </div>
+  </mat-card-content>
+  <mat-card-actions align="end" *ngIf="toRemoveCards.length == 5">
+    <button mat-flat-button color="warn" (click)="confirmDelete()">Confirm delete</button>
+  </mat-card-actions>
+</mat-card>
 <mat-card>
   <mat-card-header>
     <mat-card-title>Boosters</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div *ngFor="let card of cards" class="card-item">
+    <div *ngFor="let card of cards; index as i" class="card-item">
       <img class="card-img" [src]="card.imageUrl" />
       <div class="card-info">
         <h2 class="card-name">{{ card.name }}</h2>
         <p class="card-color">{{ card.colorIdentity }}</p>
         <p class="card-mana">{{ card.manaCost }}</p>
         <p class="card-text">{{ card.text }}</p>
+        <button mat-flat-button color="warn" (click)="addToExclude(i)">
+          Exclude
+        </button>
       </div>
     </div>
   </mat-card-content>

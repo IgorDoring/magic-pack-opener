@@ -28,17 +28,27 @@ mat-card {
     justify-content: space-evenly;
     gap: 8px;
 
+    h2 {
+      color: map-get($map: $accent-palette, $key: A200)
+    }
+
     .card-item {
-      max-width: 400px;
+      width: 100%;
       padding: 1rem;
       background-color: map-get($map: mat.$grey-palette, $key: 700);
       border-radius: 15px;
       display: flex;
+      flex-direction: column;
       justify-content: left;
 
+      @media screen and (min-width: 768px) {
+        max-width: 400px;
+        flex-direction: row;
+      }
+
       .card-image {
-        width: 250px;
-        height: 350px;
+        max-width: 250px;
+        max-height: 350px;
       }
 
       .card-info {

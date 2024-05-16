@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+
 import { Card } from 'src/app/model/card';
 import { Set } from 'src/app/model/set';
 import { CardService } from 'src/app/services/card.service';
@@ -19,7 +21,11 @@ export class CardsetsComponent {
   };
   error: { hasError: boolean; message: string } = {hasError: false, message: ""};
 
-  constructor(private cardService: CardService) {}
+  constructor(private cardService: CardService, private _snackBar: MatSnackBar) {}
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, "Close");
+  }
 
   processCards(cards: Card[]) {
     cards.forEach((card) => {
@@ -47,10 +53,7 @@ export class CardsetsComponent {
       },
       error: (err) => {
         this.spinner.startSpinner = false;
-        this.error = {
-          hasError: true,
-          message: 'Something went wrong, try another collection',
-        };
+        this.openSnackBar("Something went wrong, try another collection");
       },
     });
   }
@@ -59,5 +62,11 @@ export class CardsetsComponent {
     this.setCode = code;
     this.error.hasError = false;
     this.getCards(code);
+  }
+
+  reDraw(cardsLeft: Card[]){
+    this.cards = cardsLeft
+    this.spinner.spinnerValue = cardsLeft.length
+    this.getCards(this.setCode!);
   }
 }

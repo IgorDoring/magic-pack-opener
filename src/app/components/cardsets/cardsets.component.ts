@@ -66,7 +66,7 @@ export class CardsetsComponent {
 
   reDraw(cardsLeft: Card[]){
     this.cards = cardsLeft
-    this.spinner.spinnerValue = cardsLeft.length
+    this.spinner.spinnerValue = cardsLeft.length * 3
     this.getCards(this.setCode!);
   }
 }
